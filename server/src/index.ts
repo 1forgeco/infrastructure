@@ -15,6 +15,15 @@ import roomDetailsRoutes from "./routes/rooms/details";
 import listMembersRoutes from "./routes/orgs/members/list";
 import listTenantsRoutes from "./routes/tenants/list";
 import vacateTenantRoutes from "./routes/tenants/vacate";
+import requestPassRoutes from "./routes/gate-passes/request";
+import approvePassRoutes from "./routes/gate-passes/approve";
+import checkoutPassRoutes from "./routes/gate-passes/checkout";
+import checkinPassRoutes from "./routes/gate-passes/checkin";
+import listPassRoutes from "./routes/gate-passes/list";
+import createDueRoutes from "./routes/dues/create";
+import listDueRoutes from "./routes/dues/list";
+import recordPaymentRoutes from "./routes/payments/create";
+import listPaymentRoutes from "./routes/payments/list";
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -47,6 +56,15 @@ app.use("/api/rooms", listRoomRoutes);
 app.use("/api/rooms", roomDetailsRoutes);
 app.use("/api/tenants", listTenantsRoutes);
 app.use("/api/tenants", vacateTenantRoutes);
+app.use("/api/gate-passes", requestPassRoutes);
+app.use("/api/gate-passes", approvePassRoutes);
+app.use("/api/gate-passes", checkoutPassRoutes);
+app.use("/api/gate-passes", checkinPassRoutes);
+app.use("/api/gate-passes", listPassRoutes);
+app.use("/api/dues", createDueRoutes);
+app.use("/api/dues", listDueRoutes);
+app.use("/api/payments", recordPaymentRoutes);
+app.use("/api/payments", listPaymentRoutes);
 
 // Error handling middleware
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
