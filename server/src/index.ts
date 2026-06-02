@@ -24,6 +24,50 @@ import createDueRoutes from "./routes/dues/create";
 import listDueRoutes from "./routes/dues/list";
 import recordPaymentRoutes from "./routes/payments/create";
 import listPaymentRoutes from "./routes/payments/list";
+import createComplaintRoutes from "./routes/complaints/create";
+import assignComplaintRoutes from "./routes/complaints/assign";
+import statusComplaintRoutes from "./routes/complaints/status";
+import listComplaintRoutes from "./routes/complaints/list";
+import createAnnouncementRoutes from "./routes/announcements/create";
+import listAnnouncementRoutes from "./routes/announcements/list";
+import readAnnouncementRoutes from "./routes/announcements/read";
+import createVisitorRoutes from "./routes/visitors/create";
+import approveVisitorRoutes from "./routes/visitors/approve";
+import checkinVisitorRoutes from "./routes/visitors/checkin";
+import checkoutVisitorRoutes from "./routes/visitors/checkout";
+import listVisitorRoutes from "./routes/visitors/list";
+import createMessMenuRoutes from "./routes/mess-menus/create";
+import publishMessMenuRoutes from "./routes/mess-menus/publish";
+import getMessMenuRoutes from "./routes/mess-menus/get";
+import createMessFeedbackRoutes from "./routes/mess-feedback/create";
+import summaryMessFeedbackRoutes from "./routes/mess-feedback/summary";
+import createStaffContactRoutes from "./routes/staff-contacts/create";
+import listStaffContactRoutes from "./routes/staff-contacts/list";
+import updateStaffContactRoutes from "./routes/staff-contacts/update";
+import createDocumentRoutes from "./routes/documents/create";
+import listDocumentRoutes from "./routes/documents/list";
+import verifyDocumentRoutes from "./routes/documents/verify";
+import listNotificationRoutes from "./routes/notifications/list";
+import readNotificationRoutes from "./routes/notifications/read";
+import getDueReminderConfigRoutes from "./routes/dues/reminder-config/get";
+import updateDueReminderConfigRoutes from "./routes/dues/reminder-config/update";
+import linkParentRoutes from "./routes/parents/link";
+import updateParentPrivacyRoutes from "./routes/parents/privacy";
+import getWardDetailsRoutes from "./routes/parents/ward";
+import listAuditLogsRoutes from "./routes/audit-logs/list";
+import roomHistoryRoutes from "./routes/rooms/history";
+import getMetricsRoutes from "./routes/metrics/get";
+import platformAuthRoutes from "./routes/platform/auth/login";
+import createPlanRoutes from "./routes/platform/plans/create";
+import listPlanRoutes from "./routes/platform/plans/list";
+import listOrgRoutes from "./routes/platform/organizations/list";
+import updateOrgRoutes from "./routes/platform/organizations/update";
+import featuresOrgRoutes from "./routes/platform/organizations/features";
+
+
+
+
+
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -65,6 +109,50 @@ app.use("/api/dues", createDueRoutes);
 app.use("/api/dues", listDueRoutes);
 app.use("/api/payments", recordPaymentRoutes);
 app.use("/api/payments", listPaymentRoutes);
+app.use("/api/complaints", createComplaintRoutes);
+app.use("/api/complaints", assignComplaintRoutes);
+app.use("/api/complaints", statusComplaintRoutes);
+app.use("/api/complaints", listComplaintRoutes);
+app.use("/api/announcements", createAnnouncementRoutes);
+app.use("/api/announcements", listAnnouncementRoutes);
+app.use("/api/announcements", readAnnouncementRoutes);
+app.use("/api/visitors", createVisitorRoutes);
+app.use("/api/visitors", approveVisitorRoutes);
+app.use("/api/visitors", checkinVisitorRoutes);
+app.use("/api/visitors", checkoutVisitorRoutes);
+app.use("/api/visitors", listVisitorRoutes);
+app.use("/api/mess-menus", createMessMenuRoutes);
+app.use("/api/mess-menus", publishMessMenuRoutes);
+app.use("/api/mess-menus", getMessMenuRoutes);
+app.use("/api/mess-feedback", createMessFeedbackRoutes);
+app.use("/api/mess-feedback", summaryMessFeedbackRoutes);
+app.use("/api/staff-contacts", createStaffContactRoutes);
+app.use("/api/staff-contacts", listStaffContactRoutes);
+app.use("/api/staff-contacts", updateStaffContactRoutes);
+app.use("/api/documents", createDocumentRoutes);
+app.use("/api/documents", listDocumentRoutes);
+app.use("/api/documents", verifyDocumentRoutes);
+app.use("/api/notifications", listNotificationRoutes);
+app.use("/api/notifications", readNotificationRoutes);
+app.use("/api/dues", getDueReminderConfigRoutes);
+app.use("/api/dues", updateDueReminderConfigRoutes);
+app.use("/api/parents", linkParentRoutes);
+app.use("/api/parents", updateParentPrivacyRoutes);
+app.use("/api/parents", getWardDetailsRoutes);
+app.use("/api/audit-logs", listAuditLogsRoutes);
+app.use("/api/rooms", roomHistoryRoutes);
+app.use("/api/metrics", getMetricsRoutes);
+app.use("/api/platform/auth", platformAuthRoutes);
+app.use("/api/platform/plans", createPlanRoutes);
+app.use("/api/platform/plans", listPlanRoutes);
+app.use("/api/platform/organizations", listOrgRoutes);
+app.use("/api/platform/organizations", updateOrgRoutes);
+app.use("/api/platform/organizations", featuresOrgRoutes);
+
+
+
+
+
 
 // Error handling middleware
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
@@ -74,5 +162,5 @@ app.use((err: any, req: express.Request, res: express.Response, next: express.Ne
 
 // Start Server
 app.listen(PORT, () => {
-  console.log(`🚀 Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });

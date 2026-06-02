@@ -1,5 +1,6 @@
 import "dotenv/config";
 import { PrismaClient } from "../generated/prisma/client";
+import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
 
@@ -63,8 +64,21 @@ async function main() {
       },
     });
   }
-
   console.log("Plans seeded successfully!");
+
+  console.log("Seeding platform user...");
+  const adminPasswordHash = await bcrypt.hash("PlatformAdminPassword123", 10);
+  await prisma.platformUser.upsert({
+    where: { email: "admin@1forge.com" },
+    update: {},
+    create: {
+      email: "admin@1forge.com",
+      password_hash: adminPasswordHash,
+      full_name: "Platform Super Admin",
+      is_active: true,
+    },
+  });
+  console.log("Platform user seeded successfully!");
 }
 
 main()
