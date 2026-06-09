@@ -63,6 +63,8 @@ import listPlanRoutes from "./routes/platform/plans/list";
 import listOrgRoutes from "./routes/platform/organizations/list";
 import updateOrgRoutes from "./routes/platform/organizations/update";
 import featuresOrgRoutes from "./routes/platform/organizations/features";
+import publicOrgSearchRoutes from "./routes/public/orgs/search";
+import publicOrgSlugRoutes from "./routes/public/orgs/slug";
 
 
 
@@ -148,6 +150,10 @@ app.use("/api/platform/plans", listPlanRoutes);
 app.use("/api/platform/organizations", listOrgRoutes);
 app.use("/api/platform/organizations", updateOrgRoutes);
 app.use("/api/platform/organizations", featuresOrgRoutes);
+
+// Public (unauthenticated) routes — used by landing page & tenant login
+app.use("/api/public/orgs/search", publicOrgSearchRoutes);
+app.use("/api/public/orgs", publicOrgSlugRoutes);
 
 
 
